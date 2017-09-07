@@ -34,6 +34,8 @@ if (testArg) {
     console.log(chalk.red('\n[tst] That test does not exist!\n'));
     process.exit(1);
   }
+
+  console.log(`${chalk.cyan('[tst] Running the test suite:')} ${chalk.bold(testArg)}`);  
   return execa('npm', ['run', script], {stdio: 'inherit'});
 } else {
   const testScripts = Object.keys(scripts).filter(scriptKey => scriptKey.startsWith('test:')).map(str => str.split(':')[1]);

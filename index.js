@@ -6,6 +6,7 @@ const path = require('path');
 const tstPkg = require('./package.json');
 const getTestScripts = require('./lib/get-test-scripts');
 const runCommand = require('./lib/run-command');
+const formatTestScripts = require('./lib/format-test-scripts');
 
 let testArg;
 
@@ -34,7 +35,7 @@ if (testArg) {
   const script = testArg.startsWith(preString) ? testArg : preString + testArg;
   return runCommand(script);
 } else {
-  const testScripts = Object.keys(scripts).filter(scriptKey => scriptKey.startsWith(preString)).map(str => str.split(separator)[1]);
+  const testScripts = formatTestScripts(scripts, prefix, separator);
 
   inquirer.prompt([{
     type: 'list',

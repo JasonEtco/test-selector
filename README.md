@@ -44,3 +44,15 @@ Output:
 | ------ | ------- | ----------- |
 | `-p`, `--prefix` | `'test'` | A string that comes before all tests. |
 | `-s`, `--separator` | `':'` | Character that separates the prefix from the test name. |
+
+
+## Writing your tests
+
+For each testing library, there's a different way to separate your tests if you don't want to run them all. I'm not an expert in every testing library, so here are a few resources you can look at:
+
+- [MochaJS --grep option](https://mochajs.org/#-g---grep-pattern)
+- [Jest CLI docs](http://facebook.github.io/jest/docs/en/cli.html)
+
+## Contributing
+
+I'd love your contributions! Feel free to open up an issue or submit a PR. Thanks 💖

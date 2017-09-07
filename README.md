@@ -2,7 +2,7 @@
 
 A helper CLI tool to make it easier to run just the tests you want by asking you which tests you want to run.
 
-`test-selector` will look through your `package.json` file's scripts object and pick out the ones following the `test:testName` scheme. It will then ask you which one of those tests you want to run! Or, if you already know, you can include the test name in the command.
+`test-selector` will look through your `package.json` file's scripts object and pick out the ones following the `test:testName` scheme. It will then ask you which one of those tests you want to run! Or, if you already know the test you want to run, you can include its name in the command.
 
 ## Installation
 

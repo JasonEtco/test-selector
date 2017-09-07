@@ -16,7 +16,7 @@ $ npm install -g test-selector --save
 $ tst
 ```
 
-![image](https://user-images.githubusercontent.com/10660468/30147090-4e238982-936a-11e7-8042-d96d5abbe6a5.png)
+![tst](https://user-images.githubusercontent.com/10660468/30186825-2353275e-93f5-11e7-9d4e-22abc78769fb.gif)
 
 ### Run a specific test
 

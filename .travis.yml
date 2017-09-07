@@ -13,6 +13,3 @@ cache:
 branches:
   only: 
     - master
-
-env:
-  CODECLIMATE_REPO_TOKEN: 7104fa6362a81205c5da763c37be9220bce5bcf3eb4df1f3f03a5a3b5e1c4dfb

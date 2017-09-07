@@ -1,4 +1,4 @@
-# Test Selector
+# Test Selector &middot; [![npm version](https://img.shields.io/npm/v/test-selector.svg?style=flat)](https://www.npmjs.com/package/test-selector) [![Build Status](https://img.shields.io/travis/JasonEtco/test-selector.svg)](https://travis-ci.org/JasonEtco/test-selector) [![Coverage Status](https://coveralls.io/repos/github/JasonEtco/test-selector/badge.svg?branch=master)](https://coveralls.io/github/JasonEtco/test-selector?branch=master) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md#pull-requests)
 
 A helper CLI tool to make it easier to run just the tests you want by asking you which tests you want to run.
 

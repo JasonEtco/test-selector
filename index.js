@@ -8,6 +8,8 @@ const path = require('path');
 const tstPkg = require('./package.json');
 const pkg = require(path.resolve(process.cwd(), 'package.json'));
 
+if (!pkg) throw new Error('Could not find your project\'s package.json file.');
+
 let testArg;
 
 program

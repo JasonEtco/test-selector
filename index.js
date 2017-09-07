@@ -6,11 +6,16 @@ const chalk = require('chalk');
 const execa = require('execa');
 const path = require('path');
 const tstPkg = require('./package.json');
-const pkg = require(path.resolve(process.cwd(), 'package.json'));
 
-if (!pkg) throw new Error('Could not find your project\'s package.json file.');
-
+let pkg;
 let testArg;
+
+try {
+  pkg = require(path.resolve(process.cwd(), 'package.json'));
+} catch (e) {
+  console.log(chalk.red('\n[tst] There is no package.json in your current directory.\n'));
+  process.exit(1);
+}
 
 program
   .version('1.0.0')

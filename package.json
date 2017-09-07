@@ -1,6 +1,6 @@
 {
   "name": "test-selector",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Prompts the user to run specific test suites in a project.",
   "main": "index.js",
   "bin": {

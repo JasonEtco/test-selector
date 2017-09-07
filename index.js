@@ -47,7 +47,7 @@ if (testArg) {
     return null;
   }
 
-  console.log(`${chalk.cyan('[tst] Running the test suite:')} ${chalk.bold(testArg)}`);  
+  console.log(`${chalk.cyan('\n[tst] Running the test suite:')} ${chalk.bold(testArg)}`);  
   return execa('npm', ['run', script], {stdio: 'inherit'});
 } else {
   const testScripts = Object.keys(scripts).filter(scriptKey => scriptKey.startsWith('${prefix}${separator}')).map(str => str.split(separator)[1]);
@@ -58,7 +58,7 @@ if (testArg) {
     message: 'Which test would you like to run?',
     choices: [{ name: 'All of my tests', value: '*' }, new inquirer.Separator(), ...testScripts],
   }]).then((answers) => {
-    console.log(`${chalk.cyan('[tst] Running the test suite:')} ${chalk.bold(answers.testScript)}`);
+    console.log(`${chalk.cyan('\n[tst] Running the test suite:')} ${chalk.bold(answers.testScript)}`);
     const script = answers.testScript === '*' ? 'test' : `${prefix}${sep}${answers.testScript}`;
     return execa('npm', ['run', script], {stdio: 'inherit'});
   });

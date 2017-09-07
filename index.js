@@ -3,7 +3,7 @@
 const program = require('commander');
 const path = require('path');
 const tstPkg = require('./package.json');
-const getTestScripts = require('./lib/get-test-scripts');
+const getPackage = require('./lib/get-package');
 const runCommand = require('./lib/run-command');
 const askForScripts = require('./lib/ask-for-scripts');
 const formatTestScripts = require('./lib/format-test-scripts');
@@ -21,21 +21,21 @@ program
   .action((test) => testArg = test)
   .parse(process.argv);
 
-const scripts = getTestScripts();
-if (typeof scripts === 'string') {
-  console.log(`\n${scripts}\n`);
+const pkg = getPackage();
+if (typeof pkg === 'string') {
+  console.log(`\n${pkg}\n`);
   return;
 }
 
-const prefix = program.prefix || 'test';
-const separator = program.separator || ':';
+const prefix = program.prefix || (pkg.tst && pkg.tst.prefix ? pkg.tst.prefix : 'test');
+const separator = program.separator || (pkg.tst && pkg.tst.separator ? pkg.tst.separator : ':');
 const preString = prefix + separator;
 
 if (testArg) {
   const script = testArg.startsWith(preString) ? testArg : preString + testArg;
   return runCommand(script);
 } else {
-  const testScripts = formatTestScripts(scripts, prefix, separator);  
+  const testScripts = formatTestScripts(pkg.scripts, prefix, separator);  
   askForScripts(testScripts)
     .then((answers) => {
       const script = answers.testScript === '*' ? 'test' : preString + answers.testScript;

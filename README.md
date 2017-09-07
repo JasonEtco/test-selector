@@ -42,5 +42,5 @@ Output:
 
 | Option | Default | Description |
 | ------ | ------- | ----------- |
-| `-p`, `--prefix` | `'test'` | Separator character |
-| `-s`, `--separator` | `':'` | String that all tests are prefixed with |
+| `-p`, `--prefix` | `'test'` | A string that comes before all tests. |
+| `-s`, `--separator` | `':'` | Character that separates the prefix from the test name. |

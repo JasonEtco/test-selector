@@ -17,7 +17,7 @@ program
   .name('tst')
   .usage('[test]')
   .description(`${tstPkg.description}\n  Having trouble? Open an issue here: ${tstPkg.bugs.url}`)
-  .option('-p, --prefix <prefix>', 'A string that comes before all tests.')
+  .option('-p, --prefix <prefix>', 'A string that comes before all tests. Default is `test`.')
   .option('-s, --separator <separator>', 'Character that separates the prefix from the test name. Default is `:`.')
   .arguments('[test]')
   .action((test) => testArg = test)

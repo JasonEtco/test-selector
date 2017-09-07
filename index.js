@@ -3,7 +3,7 @@
 const program = require('commander');
 const inquirer = require('inquirer');
 const chalk = require('chalk');
-const spawn = require('child_process').spawn;
+const execa = require('execa');
 const path = require('path');
 const pkg = require(path.resolve(process.cwd(), 'package.json'));
 
@@ -29,5 +29,5 @@ inquirer.prompt([{
 }]).then((answers) => {
   console.log(`${chalk.cyan('[NTESTS] Running the test suite:')} ${chalk.bold(answers.testScript)}`);
   const script = answers.testScript === 'All of them' ? 'test' : `test:${answers.testScript}`;
-  spawn('npm', ['run', script], { stdio: 'inherit' });
+  execa('npm', ['run', script], {stdio: 'inherit'});
 });

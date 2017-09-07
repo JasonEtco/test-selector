@@ -4,18 +4,10 @@ A helper CLI tool to make it easier to run just the tests you want by asking you
 
 `test-selector` will look through your `package.json` file's scripts object and pick out the ones following the `test:testName` scheme. It will then ask you which one of those tests you want to run! Or, if you already know, you can include the test name in the command.
 
-## Requirements
+## Installation
 
-`tst` assumes that your `package.json` file's scripts object is formatted like this:
-
-```json
-{
-  "scripts": {
-    "test": "test for things",
-    "test:api": "test just the api",
-    "test:compiler": "test just the compiler"
-  }
-}
+```bash
+$ npm install -g test-selector --save
 ```
 
 ### Basic usage
@@ -36,6 +28,20 @@ $ tst api
 Output:
 ```
 [tst] Running the test suite: api
+```
+
+## Requirements
+
+`tst` assumes that your `package.json` file's scripts object is formatted like this:
+
+```json
+{
+  "scripts": {
+    "test": "test for things",
+    "test:api": "test just the api",
+    "test:compiler": "test just the compiler"
+  }
+}
 ```
 
 ### Available options

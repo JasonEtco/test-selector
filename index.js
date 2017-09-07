@@ -1,11 +1,11 @@
 #! /usr/bin/env node
 
 const program = require('commander');
-const inquirer = require('inquirer');
 const path = require('path');
 const tstPkg = require('./package.json');
 const getTestScripts = require('./lib/get-test-scripts');
 const runCommand = require('./lib/run-command');
+const askForScripts = require('./lib/ask-for-scripts');
 const formatTestScripts = require('./lib/format-test-scripts');
 
 let testArg;
@@ -35,16 +35,11 @@ if (testArg) {
   const script = testArg.startsWith(preString) ? testArg : preString + testArg;
   return runCommand(script);
 } else {
-  const testScripts = formatTestScripts(scripts, prefix, separator);
-
-  inquirer.prompt([{
-    type: 'list',
-    name: 'testScript',
-    message: 'Which test would you like to run?',
-    choices: [{ name: 'All of my tests', value: '*' }, new inquirer.Separator(), ...testScripts],
-  }]).then((answers) => {
-    const script = answers.testScript === '*' ? 'test' : preString + answers.testScript;
-    return runCommand(script);
-  });
+  const testScripts = formatTestScripts(scripts, prefix, separator);  
+  askForScripts(testScripts)
+    .then((answers) => {
+      const script = answers.testScript === '*' ? 'test' : preString + answers.testScript;
+      return runCommand(script);
+    });
 }
 

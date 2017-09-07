@@ -1,12 +1,4 @@
-exports.keys = {
-  up: '\u001b[A',
-  down: '\u001b[B',
-  left: '\u001b[D',
-  right: '\u001b[C',
-  enter: '\n',
-};
-
-exports.checkAnswer = (responses) => {
+function checkAnswer (responses) {
   if (arguments.length > 1) {
     responses = Array.prototype.slice.call(arguments, 0);
   }
@@ -23,7 +15,7 @@ exports.checkAnswer = (responses) => {
 
   const stdin = require('mock-stdin').stdin();
 
-  const k = 0;
+  let k = 0;
 
   function sendAnswer() {
     setTimeout(() => {
@@ -41,3 +33,16 @@ exports.checkAnswer = (responses) => {
 
   sendAnswer();
 }
+
+const keys = {
+  up: '\u001b[A',
+  down: '\u001b[B',
+  left: '\u001b[D',
+  right: '\u001b[C',
+  enter: '\n',
+};
+
+module.exports = {
+  keys,
+  checkAnswer,
+};

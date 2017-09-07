@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "mocha",
-    "test:coverage": "nyc mocha"
+    "test:coverage": "nyc mocha",
   },
   "repository": {
     "type": "git",
@@ -39,6 +39,7 @@
     "chai": "^4.1.2",
     "mocha": "^3.5.0",
     "mocha.parallel": "^0.15.3",
+    "mock-stdin": "^0.3.1",
     "nyc": "^11.2.1"
   }
 }

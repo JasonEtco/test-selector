@@ -1,0 +1,34 @@
+{
+  "name": "ntests",
+  "version": "1.0.0",
+  "description": "Prompts the user to run specific test suites in a project.",
+  "main": "index.js",
+  "bin": {
+    "ntests": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JasonEtco/ntests.git"
+  },
+  "keywords": [
+    "npm",
+    "tests",
+    "testing",
+    "test",
+    "runner",
+    "cli",
+    "package"
+  ],
+  "author": "Jason Etcovitch",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JasonEtco/ntests/issues"
+  },
+  "homepage": "https://github.com/JasonEtco/ntests#readme",
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "commander": "^2.11.0",
+    "inquirer": "^3.2.3",
+    "shelljs": "^0.7.8"
+  }
+}

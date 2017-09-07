@@ -1,14 +1,14 @@
 {
-  "name": "ntests",
+  "name": "test-selector",
   "version": "1.0.0",
   "description": "Prompts the user to run specific test suites in a project.",
   "main": "index.js",
   "bin": {
-    "ntests": "index.js"
+    "tst": "index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JasonEtco/ntests.git"
+    "url": "git+https://github.com/JasonEtco/test-selector.git"
   },
   "keywords": [
     "npm",
@@ -22,9 +22,9 @@
   "author": "Jason Etcovitch",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JasonEtco/ntests/issues"
+    "url": "https://github.com/JasonEtco/test-selector/issues"
   },
-  "homepage": "https://github.com/JasonEtco/ntests#readme",
+  "homepage": "https://github.com/JasonEtco/test-selector#readme",
   "dependencies": {
     "chalk": "^2.1.0",
     "commander": "^2.11.0",

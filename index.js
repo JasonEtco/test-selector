@@ -15,7 +15,7 @@ program
 const {scripts} = pkg;
 
 if (!scripts || !scripts.test) {
-  console.log(chalk.red('\n[NTESTS] Your package.json does not have a test script!\n'));
+  console.log(chalk.red('\n[tst] Your package.json does not have a test script!\n'));
   process.exit(1);
 }
 
@@ -27,7 +27,7 @@ inquirer.prompt([{
   message: 'Which test would you like to run?',
   choices: ['All of my tests', ...testScripts],
 }]).then((answers) => {
-  console.log(`${chalk.cyan('[NTESTS] Running the test suite:')} ${chalk.bold(answers.testScript)}`);
+  console.log(`${chalk.cyan('[tst] Running the test suite:')} ${chalk.bold(answers.testScript)}`);
   const script = answers.testScript === 'All of them' ? 'test' : `test:${answers.testScript}`;
   execa('npm', ['run', script], {stdio: 'inherit'});
 });

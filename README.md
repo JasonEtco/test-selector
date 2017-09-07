@@ -1,6 +1,6 @@
 # Test Selector &middot; [![npm version](https://img.shields.io/npm/v/test-selector.svg?style=flat)](https://www.npmjs.com/package/test-selector) [![Build Status](https://img.shields.io/travis/JasonEtco/test-selector.svg)](https://travis-ci.org/JasonEtco/test-selector) [![Coverage Status](https://coveralls.io/repos/github/JasonEtco/test-selector/badge.svg?branch=master)](https://coveralls.io/github/JasonEtco/test-selector?branch=master)
 
-A helper CLI tool to make it easier to run just the tests.
+A helper CLI tool to make it easier to run just the tests you want to run.
 
 `test-selector` will look through your `package.json` file's scripts object and pick out the ones following the `test:testName` scheme. It will then ask you which one of those tests you want to run! Or, if you already know the test you want to run, you can include its name in the command.
 

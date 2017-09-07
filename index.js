@@ -12,8 +12,10 @@ let testArg;
 
 program
   .version('1.0.0')
-  .description(tstPkg.description)
-  .arguments('<test>')
+  .name('tst')
+  .usage('[test]')
+  .description(`${tstPkg.description}\n  Having trouble? Open an issue here: ${tstPkg.bugs.url}`)
+  .arguments('[test]')
   .action((test) => testArg = test)
   .parse(process.argv);
 

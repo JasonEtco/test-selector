@@ -6,7 +6,7 @@ const parallel = require('mocha.parallel');
 
 const {checkAnswer, keys} = require('./utils');
 
-const getTestScripts = require('../lib/get-test-scripts');
+const getPackage = require('../lib/get-package');
 const runCommand = require('../lib/run-command');
 const askForScripts = require('../lib/ask-for-scripts');
 
@@ -32,7 +32,7 @@ describe('tst command', function () {
 
     before('move to fixtures dir', function () {
       process.chdir(path.join(__dirname, 'fixtures'));
-      scripts = getTestScripts();
+      scripts = require('./fixtures/package.json').scripts;
     });
 
     it('runs the main test command', async function () {
@@ -80,7 +80,7 @@ describe('tst command', function () {
 
     before('move to fixtures dir', function () {
       process.chdir(path.join(__dirname, 'fixtures'));
-      scripts = getTestScripts();
+      scripts = require('./fixtures/package.json').scripts;
     });
 
     it('runs the provided argument script with the prefix and separator', async function () {
@@ -115,18 +115,6 @@ describe('tst command', function () {
         const {stdout} = await execa('../../index.js', ['test-three', '--separator', '-']);
         expect(stdout).to.include(scripts['test-three']);
       });
-    })
-  
-    describe('custom separator and custom prefix', function () {
-      it('runs the provided argument script with a custom prefix and separator without either in the arg', async function () {
-        const {stdout} = await execa('../../index.js', ['five', '--prefix', 'pizza', '--separator', '-']);
-        expect(stdout).to.include(scripts['pizza-five']);
-      });
-  
-      it('runs the provided argument script with a custom prefix and separator with both in the arg', async function () {
-        const {stdout} = await execa('../../index.js', ['pizza-five', '--prefix', 'pizza', '--separator', '-']);
-        expect(stdout).to.include(scripts['pizza-five']);
-      });
     });
   
     describe('custom separator and custom prefix', function () {
@@ -143,6 +131,43 @@ describe('tst command', function () {
 
     after('move back to root dir', function () {
       process.chdir(path.join(__dirname, '..'));
+    });
+  });
+
+  parallel('settings in the package.json file', function() {
+    let scripts;
+
+    before('move to fixtures dir', function () {
+      process.chdir(path.join(__dirname, 'fixtures', 'with-settings'));
+      scripts = require('./fixtures/with-settings/package.json').scripts;
+    });
+
+    it('runs the provided argument script with the prefix and separator', async function () {
+      const {stdout} = await execa('../../../index.js', ['pizza-four']);
+      expect(stdout).to.include(scripts['pizza-four']);
+    });
+  
+    it('runs the provided argument script without the prefix and separator', async function () {
+      const {stdout} = await execa('../../../index.js', ['four']);
+      expect(stdout).to.include(scripts['pizza-four']);
+    });
+
+    it('runs the correct selected test', async function () {
+      const {stdout} = await execa('../../../index.js', {
+        input: keys.down + keys.enter,
+      });
+      expect(stdout).to.include(scripts['pizza-four']);
+    });
+
+    it('overwrites package.json settings with CLI options', async function () {
+      const {stdout} = await execa('../../../index.js', ['--prefix', 'test', '--separator', ':'], {
+        input: keys.down + keys.enter,
+      });
+      expect(stdout).to.include(scripts['test:two']);
+    });
+
+    after('move back to root dir', function () {
+      process.chdir(path.join(__dirname, '..', '..'));
     });
   });
 });

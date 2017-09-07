@@ -7,8 +7,8 @@
     "tst": "index.js"
   },
   "scripts": {
-    "test": "nyc --reporter=text-lcov mocha | coveralls",
-    "test:coverage": "nyc mocha"
+    "test": "mocha",
+    "test:coverage": "nyc npm test && nyc report --reporter=text-lcov mocha | coveralls"
   },
   "repository": {
     "type": "git",

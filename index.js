@@ -4,7 +4,8 @@ const program = require('commander');
 const inquirer = require('inquirer');
 const chalk = require('chalk');
 const spawn = require('child_process').spawn;
-const pkg = require(process.cwd() + '/package.json');
+const path = require('path');
+const pkg = require(path.resolve(process.cwd(), 'package.json'));
 
 program
   .version('1.0.0')

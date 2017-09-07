@@ -1,6 +1,6 @@
-# Test Selector &middot; [![npm version](https://img.shields.io/npm/v/test-selector.svg?style=flat)](https://www.npmjs.com/package/test-selector) [![Build Status](https://img.shields.io/travis/JasonEtco/test-selector.svg)](https://travis-ci.org/JasonEtco/test-selector) [![Coverage Status](https://coveralls.io/repos/github/JasonEtco/test-selector/badge.svg?branch=master)](https://coveralls.io/github/JasonEtco/test-selector?branch=master) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md#pull-requests)
+# Test Selector &middot; [![npm version](https://img.shields.io/npm/v/test-selector.svg?style=flat)](https://www.npmjs.com/package/test-selector) [![Build Status](https://img.shields.io/travis/JasonEtco/test-selector.svg)](https://travis-ci.org/JasonEtco/test-selector) [![Coverage Status](https://coveralls.io/repos/github/JasonEtco/test-selector/badge.svg?branch=master)](https://coveralls.io/github/JasonEtco/test-selector?branch=master)
 
-A helper CLI tool to make it easier to run just the tests you want by asking you which tests you want to run.
+A helper CLI tool to make it easier to run just the tests.
 
 `test-selector` will look through your `package.json` file's scripts object and pick out the ones following the `test:testName` scheme. It will then ask you which one of those tests you want to run! Or, if you already know the test you want to run, you can include its name in the command.
 
@@ -30,7 +30,7 @@ Output:
 [tst] Running the test suite: api
 ```
 
-## Requirements
+## Setting up your tests
 
 `tst` assumes that your `package.json` file's scripts object is formatted like this:
 
@@ -52,13 +52,25 @@ Output:
 | `-s`, `--separator` | `':'` | Character that separates the prefix from the test name. |
 
 
+You can use these options like this:
+
+```bash
+$ tst --separator -
+```
+
+This will suggest any scripts that look like `test-TESTNAME`.
+
 ## Writing your tests
 
 For each testing library, there's a different way to separate your tests if you don't want to run them all. I'm not an expert in every testing library, so here are a few resources you can look at:
 
-- [MochaJS --grep option](https://mochajs.org/#-g---grep-pattern)
+- [Mocha's --grep option](https://mochajs.org/#-g---grep-pattern)
 - [Jest CLI docs](http://facebook.github.io/jest/docs/en/cli.html)
 
 ## Contributing
 
 I'd love your contributions! Feel free to open up an issue or submit a PR. Thanks 💖
+
+## Changelog
+
+- 1.0.0 - Initial release

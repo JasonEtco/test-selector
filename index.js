@@ -22,7 +22,7 @@ program
 
 const scripts = getTestScripts();
 if (typeof scripts === 'string') {
-  console.log(`\n${scripts}\n`);
+  if (process.env.NODE_ENV !== 'test') console.log(`\n${scripts}\n`);
   return;
 }
 

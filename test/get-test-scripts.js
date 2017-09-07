@@ -6,12 +6,8 @@ const chalk = require('chalk');
 describe('get test scripts', () => {
   it('returns the correct test scripts', () => {
     const scripts = getTestScripts(path.join(__dirname, 'fixtures'));
-    expect(scripts).to.deep.equal({
-      test: 'test one',
-      'test:two': 'node --eval "console.log(\'hi\')"',
-      'test-three': 'test three',
-      'pizza-four': 'test four'
-    });
+    const pkg = require('./fixtures/package.json');
+    expect(scripts).to.deep.equal(pkg.scripts);
   });
 
   it('returns an error when the package.json has no test scripts', () => {
@@ -26,9 +22,7 @@ describe('get test scripts', () => {
 
   it('returns this project\'s scripts with no cwd argument', () => {
     const scripts = getTestScripts();
-    expect(scripts).to.deep.equal({
-      test: 'mocha',
-      'test:coverage': 'nyc mocha',
-    });    
+    const tstPkgScripts = require('../package.json').scripts;
+    expect(scripts).to.deep.equal(tstPkgScripts);    
   });
 });

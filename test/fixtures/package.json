@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "test": "test one",
-    "test:two": "node --eval \"console.log('hi')\"",
+    "test:two": "test two",
     "test-three": "test three",
-    "pizza-four": "test four"
+    "pizza:four": "test four",
+    "pizza-five": "test five"
   }
 }

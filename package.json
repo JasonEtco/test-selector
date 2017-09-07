@@ -7,8 +7,8 @@
     "tst": "index.js"
   },
   "scripts": {
-    "test": "mocha",
-    "test:coverage": "nyc mocha"
+    "test": "cross-env NODE_ENV=test mocha",
+    "test:coverage": "cross-env NODE_ENV=test nyc mocha"
   },
   "repository": {
     "type": "git",
@@ -37,10 +37,8 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "cross-env": "^5.0.5",
     "mocha": "^3.5.0",
-    "mock-stdin": "^0.3.1",
-    "nyc": "^11.2.1",
-    "sinon": "^3.2.1",
-    "sinon-chai": "^2.13.0"
+    "nyc": "^11.2.1"
   }
 }

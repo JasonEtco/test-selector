@@ -1,0 +1,10 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "test one",
+    "test:two": "test two",
+    "test-three": "test three",
+    "pizza-four": "test four"
+  }
+}

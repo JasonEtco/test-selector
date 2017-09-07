@@ -2,13 +2,14 @@ const inquirer = require('inquirer');
 const execa = require('execa');
 const path = require('path');
 const expect = require('chai').expect;
+const parallel = require('mocha.parallel');
 
 const {checkAnswer, keys} = require('./utils');
 
 const getTestScripts = require('../lib/get-test-scripts');
 const runCommand = require('../lib/run-command');
 
-describe('tst command', function () {
+parallel('tst command', function () {
   this.timeout(10000);
 
   it('outputs something to stdout', async function () {

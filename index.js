@@ -17,6 +17,8 @@ program
   .name('tst')
   .usage('[test]')
   .description(`${tstPkg.description}\n  Having trouble? Open an issue here: ${tstPkg.bugs.url}`)
+  .option('-p, --prefix <prefix>', 'A string that comes before all tests.')
+  .option('-s, --separator <separator>', 'Character that separates the prefix from the test name. Default is `:`.')
   .arguments('[test]')
   .action((test) => testArg = test)
   .parse(process.argv);
@@ -29,18 +31,21 @@ if (!scripts || !scripts.test) {
   return null;
 }
 
+const prefix = program.prefix || 'test';
+const separator = program.separator || ':';
+
 if (testArg) {
-  const script = testArg.startsWith('test:') ? testArg : `test:${testArg}`;
+  const script = testArg.startsWith('${prefix}${separator}') ? testArg : `${prefix}${separator}${testArg}`;
 
   if (!hasScript(script)) {
-    console.log(chalk.red('\n[tst] That test does not exist!\n'));
+    console.log(chalk.red(`\n[tst] The test ${chalk.bold(script)} does not exist!\n`));
     return null;
   }
 
   console.log(`${chalk.cyan('[tst] Running the test suite:')} ${chalk.bold(testArg)}`);  
   return execa('npm', ['run', script], {stdio: 'inherit'});
 } else {
-  const testScripts = Object.keys(scripts).filter(scriptKey => scriptKey.startsWith('test:')).map(str => str.split(':')[1]);
+  const testScripts = Object.keys(scripts).filter(scriptKey => scriptKey.startsWith('${prefix}${separator}')).map(str => str.split(separator)[1]);
   
   inquirer.prompt([{
     type: 'list',
@@ -49,7 +54,7 @@ if (testArg) {
     choices: [{ name: 'All of my tests', value: '*' }, new inquirer.Separator(), ...testScripts],
   }]).then((answers) => {
     console.log(`${chalk.cyan('[tst] Running the test suite:')} ${chalk.bold(answers.testScript)}`);
-    const script = answers.testScript === '*' ? 'test' : `test:${answers.testScript}`;
+    const script = answers.testScript === '*' ? 'test' : `${prefix}${sep}${answers.testScript}`;
     return execa('npm', ['run', script], {stdio: 'inherit'});
   });
 }

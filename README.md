@@ -2,7 +2,7 @@
 
 A helper CLI tool to make it easier to run just the tests you want by asking you which tests you want to run.
 
-`test-selector` will look through your `package.json` file's scripts object and pick out the ones following the `test:testName` scheme. It will then ask you which one of those tests you want to run! Or, if you already know, you can include the test name in the command.
+`test-selector` will look through your `package.json` file's scripts object and pick out the ones following the `test:testName` scheme. It will then ask you which one of those tests you want to run! Or, if you already know the test you want to run, you can include its name in the command.
 
 ## Installation
 
@@ -16,7 +16,7 @@ $ npm install -g test-selector --save
 $ tst
 ```
 
-![image](https://user-images.githubusercontent.com/10660468/30147090-4e238982-936a-11e7-8042-d96d5abbe6a5.png)
+![tst](https://user-images.githubusercontent.com/10660468/30186825-2353275e-93f5-11e7-9d4e-22abc78769fb.gif)
 
 ### Run a specific test
 

@@ -26,7 +26,7 @@ const hasScript = key => Object.keys(scripts).some(x => Boolean(scripts[key]));
 
 if (!scripts || !scripts.test) {
   console.log(chalk.red('\n[tst] Your package.json does not have a test script!\n'));
-  process.exit(1);
+  return null;
 }
 
 if (testArg) {
@@ -34,7 +34,7 @@ if (testArg) {
 
   if (!hasScript(script)) {
     console.log(chalk.red('\n[tst] That test does not exist!\n'));
-    process.exit(1);
+    return null;
   }
 
   console.log(`${chalk.cyan('[tst] Running the test suite:')} ${chalk.bold(testArg)}`);  

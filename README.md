@@ -51,14 +51,30 @@ Output:
 | `-p`, `--prefix` | `'test'` | A string that comes before all tests. |
 | `-s`, `--separator` | `':'` | Character that separates the prefix from the test name. |
 
-
 You can use these options like this:
 
 ```bash
-$ tst --separator -
+$ tst --prefix unit-test --separator -
 ```
 
-This will suggest any scripts that look like `test-TESTNAME`.
+This will suggest any scripts that look like `unit-test-TESTNAME`.
+
+### Configuration in your `package.json` file
+
+You may also add a `"tst"` object to your project's `package.json` file.
+
+```json
+{
+  "scripts": {
+    "test": "test for things",
+    "unit-test-api": "test just the api",
+  },
+  "tst": {
+    "prefix": "unit-test",
+    "separator": "-"
+  }
+}
+```
 
 ## Writing your tests
 
@@ -74,3 +90,4 @@ I'd love your contributions! Feel free to open up an issue or submit a PR. Thank
 ## Changelog
 
 - 1.0.0 - Initial release
+- 1.0.1 - Enable settings in `package.json`
